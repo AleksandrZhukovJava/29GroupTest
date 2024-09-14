@@ -3,6 +3,8 @@ package me.zhukov.hogwarts.service.impl;
 import me.zhukov.hogwarts.model.Student;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
@@ -10,8 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+@SpringBootTest
 class StudentServiceImplTest {
-    private final StudentServiceImpl studentService = new StudentServiceImpl();
+    @Autowired
+    private StudentServiceImpl studentService;
 
     @Test
     @DisplayName("Добавление студента")

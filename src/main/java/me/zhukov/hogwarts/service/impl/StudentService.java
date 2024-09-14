@@ -14,4 +14,5 @@ public interface StudentService {
     void updateStudent(long id, Student studentForUpdate);
 
     List<Student> findAllByAge(int age);
+    List<Student> findByAgeBetween(int ageMin, int ageMax);
 }

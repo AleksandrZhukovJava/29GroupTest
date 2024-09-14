@@ -1,6 +1,7 @@
 package me.zhukov.hogwarts.service.impl;
 
 import me.zhukov.hogwarts.model.Faculty;
+import me.zhukov.hogwarts.model.Student;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface FacultyService {
     void updateFaculty(long id, Faculty facultyForUpdate);
 
     List<Faculty> getAllByColor(String color);
+
+    List<Faculty> getFacultyByColorOrName(String colorOrName);
 }

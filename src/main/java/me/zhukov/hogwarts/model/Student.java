@@ -1,6 +1,5 @@
 package me.zhukov.hogwarts.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +18,9 @@ public class Student {
     public Student(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Student() {
     }
 
     public Long getId() {

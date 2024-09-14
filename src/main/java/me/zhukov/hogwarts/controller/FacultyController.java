@@ -2,6 +2,7 @@ package me.zhukov.hogwarts.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import me.zhukov.hogwarts.model.Faculty;
+import me.zhukov.hogwarts.model.Student;
 import me.zhukov.hogwarts.service.impl.FacultyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +42,9 @@ public class FacultyController {
     @GetMapping("/get/by-color")
     public List<Faculty> getAllByColor(@RequestParam("color") String color) {
         return facultyService.getAllByColor(color);
+    }
+    @GetMapping("/get/by-color-or-name")
+    public List<Faculty> getFacultyByColorOrName(String colorOrName) {
+        return facultyService.getFacultyByColorOrName(colorOrName);
     }
 }

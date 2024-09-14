@@ -1,53 +1,55 @@
 package me.zhukov.hogwarts.service.impl;
 
-import jakarta.annotation.PostConstruct;
+import me.zhukov.hogwarts.exception.StudentNotFoundException;
 import me.zhukov.hogwarts.model.Student;
+import me.zhukov.hogwarts.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-    private static long studentCounter = 1;
-    private final Map<Long, Student> studentRepository = new HashMap<>();
+    private final StudentRepository studentRepository;
 
-    @PostConstruct
-    public void init() {
-        addStudent(new Student("Гарри Поттер", 18));
-        addStudent(new Student("Полумна Лавгуд", 19));
-        addStudent(new Student("Рон Уизли", 19));
-        addStudent(new Student("Драко Малфой", 18));
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
     @Override
     public Student addStudent(Student student) {
-        student.setId(studentCounter++);
-        studentRepository.put(student.getId(), student);
-        return student;
+        return studentRepository.save(student);
     }
 
     @Override
     public Student removeStudent(long id) {
-        return studentRepository.remove(id);
+        Student student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException(id));
+        studentRepository.delete(student);
+        return student;
     }
 
     @Override
     public Student findStudent(long id) {
-        return studentRepository.get(id);
+        return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException(id));
     }
 
     @Override
     public void updateStudent(long id, Student studentForUpdate) {
+        if (!studentRepository.existsById(id)) {
+            throw new StudentNotFoundException(id);
+        }
         studentForUpdate.setId(id);
-        studentRepository.put(id, studentForUpdate);
+        studentRepository.save(studentForUpdate);
     }
 
     @Override
     public List<Student> findAllByAge(int age) {
-        return studentRepository.values().stream()
+        return studentRepository.findAll().stream()
                 .filter(student -> student.getAge() == age)
                 .toList();
+    }
+
+    @Override
+    public List<Student> findByAgeBetween(int ageMin, int ageMax) {
+        return studentRepository.findByAgeBetween(ageMin, ageMax);
     }
 }
