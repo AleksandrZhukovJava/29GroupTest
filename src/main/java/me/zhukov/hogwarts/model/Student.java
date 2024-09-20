@@ -1,9 +1,9 @@
 package me.zhukov.hogwarts.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -14,6 +14,8 @@ public class Student {
     private Long id;
     private String name;
     private int age;
+    @ManyToOne
+    private Faculty faculty;
 
     public Student(String name, int age) {
         this.name = name;
@@ -21,6 +23,14 @@ public class Student {
     }
 
     public Student() {
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     public Long getId() {

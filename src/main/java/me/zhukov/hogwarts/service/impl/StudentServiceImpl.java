@@ -2,6 +2,7 @@ package me.zhukov.hogwarts.service.impl;
 
 import me.zhukov.hogwarts.exception.StudentNotFoundException;
 import me.zhukov.hogwarts.model.Student;
+import me.zhukov.hogwarts.repository.FacultyRepository;
 import me.zhukov.hogwarts.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,11 @@ import java.util.List;
 @Service
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
+    private final FacultyRepository facultyRepository;
 
-    public StudentServiceImpl(StudentRepository studentRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository, FacultyRepository facultyRepository) {
         this.studentRepository = studentRepository;
+        this.facultyRepository = facultyRepository;
     }
 
     @Override

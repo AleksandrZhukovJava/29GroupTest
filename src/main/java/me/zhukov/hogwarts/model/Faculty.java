@@ -1,10 +1,12 @@
 package me.zhukov.hogwarts.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,13 +16,24 @@ public class Faculty {
     private Long id;
     private String name;
     private String color;
+    @OneToMany(mappedBy = "faculty")
+    @JsonIgnore
+    private List<Student> students;
 
     public Faculty(String name, String color) {
         this.name = name;
         this.color = color;
     }
 
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
     public Faculty() {
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     public Long getId() {

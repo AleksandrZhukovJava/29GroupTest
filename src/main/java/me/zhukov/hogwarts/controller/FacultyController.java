@@ -43,8 +43,15 @@ public class FacultyController {
     public List<Faculty> getAllByColor(@RequestParam("color") String color) {
         return facultyService.getAllByColor(color);
     }
+
     @GetMapping("/get/by-color-or-name")
-    public List<Faculty> getFacultyByColorOrName(String colorOrName) {
-        return facultyService.getFacultyByColorOrName(colorOrName);
+    public List<Faculty> getFacultyByColorOrName(@RequestParam("color") String color,
+                                                 @RequestParam("name") String name) {
+        return facultyService.getFacultyByColorOrName(color, name);
+    }
+
+    @GetMapping("/{id}/get-students")
+    public List<Student> getStudentsByFacultyId(@PathVariable("id") Long id) {
+        return facultyService.findFaculty(id).getStudents();
     }
 }

@@ -2,6 +2,7 @@ package me.zhukov.hogwarts.service.impl;
 
 import me.zhukov.hogwarts.exception.FacultyNotFoundException;
 import me.zhukov.hogwarts.model.Faculty;
+import me.zhukov.hogwarts.model.Student;
 import me.zhukov.hogwarts.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +50,7 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public List<Faculty> getFacultyByColorOrName(String colorOrName) {
-        return facultyRepository.findByColorOrName(colorOrName);
+    public List<Faculty> getFacultyByColorOrName(String color, String name) {
+        return facultyRepository.findByColorIgnoreCaseOrNameIgnoreCase(color, name);
     }
 }

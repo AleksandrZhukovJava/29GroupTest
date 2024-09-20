@@ -1,5 +1,6 @@
 package me.zhukov.hogwarts.repository;
 
+import me.zhukov.hogwarts.model.Faculty;
 import me.zhukov.hogwarts.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
