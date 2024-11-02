@@ -1,4 +1,4 @@
-package me.zhukov.hogwarts.service.impl;
+package me.zhukov.hogwarts.service;
 
 import me.zhukov.hogwarts.model.Faculty;
 import me.zhukov.hogwarts.model.Student;

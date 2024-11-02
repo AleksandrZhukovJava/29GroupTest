@@ -4,6 +4,7 @@ import me.zhukov.hogwarts.exception.StudentNotFoundException;
 import me.zhukov.hogwarts.model.Student;
 import me.zhukov.hogwarts.repository.FacultyRepository;
 import me.zhukov.hogwarts.repository.StudentRepository;
+import me.zhukov.hogwarts.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

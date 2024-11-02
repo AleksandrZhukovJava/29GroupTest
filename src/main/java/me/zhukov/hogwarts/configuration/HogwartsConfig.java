@@ -23,6 +23,14 @@ public class HogwartsConfig {
     }
 
     @Bean
+    public GroupedOpenApi avatarGroup() {
+        return GroupedOpenApi.builder()
+                .group("контроллеры аватаров")
+                .pathsToMatch("/avatar/**")
+                .build();
+    }
+
+    @Bean
     public GroupedOpenApi group() {
         return GroupedOpenApi.builder()
                 .group("все контроллеры")

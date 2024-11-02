@@ -2,8 +2,8 @@ package me.zhukov.hogwarts.service.impl;
 
 import me.zhukov.hogwarts.exception.FacultyNotFoundException;
 import me.zhukov.hogwarts.model.Faculty;
-import me.zhukov.hogwarts.model.Student;
 import me.zhukov.hogwarts.repository.FacultyRepository;
+import me.zhukov.hogwarts.service.FacultyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

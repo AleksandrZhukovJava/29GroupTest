@@ -3,7 +3,7 @@ package me.zhukov.hogwarts.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import me.zhukov.hogwarts.model.Faculty;
 import me.zhukov.hogwarts.model.Student;
-import me.zhukov.hogwarts.service.impl.FacultyService;
+import me.zhukov.hogwarts.service.FacultyService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

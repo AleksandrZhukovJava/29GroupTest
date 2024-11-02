@@ -2,7 +2,7 @@ package me.zhukov.hogwarts.controller;
 
 import me.zhukov.hogwarts.model.Faculty;
 import me.zhukov.hogwarts.model.Student;
-import me.zhukov.hogwarts.service.impl.StudentService;
+import me.zhukov.hogwarts.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
